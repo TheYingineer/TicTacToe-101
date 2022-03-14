@@ -2,8 +2,8 @@
 //            INSTRUCTIONS
 //       ***********************
 
-// let jumbotron = document.getElementsByClassName("jumbotron");
-// console.log('jumbotron',jumbotron);
+let jumbotron = document.getElementsByClassName("jumbotron");
+console.log('jumbotron',jumbotron);
 
 
 
@@ -51,24 +51,16 @@ const addMarker = (id) => {
   
   // @TODO-2: Build a line of code that will set the innerHTML property of the element that was clicked to the "currentMarker"
   
-document.getElementById(id).innerHTML=currentMarker
+  document.getElementById(id).innerHTML=currentMarker
 
   // @TODO-2.5: MIX & MATCH, You will need the following pieces of code to build that line:
   // = currentMarker
   // .getElementById(id)
   // document
   // .innerHTML 
-
-  changeMarker()
+  checkForWin()
+  // changeMarker()
 }
-
-
-
-
-
-
-
-
 
 
 // This "changeMarker" function changes "X" to "O" in the "currentMarker" variable or "O" to "X"
@@ -79,14 +71,6 @@ const changeMarker = () => {
     currentMarker = "X"
   }
 }
-
-
-
-
-
-
-
-
 
 
 // This "resetBoard" function is called when the user clicks on the "Restart" button.
@@ -114,6 +98,7 @@ const resetBoard = () => {
 }
 
 
+
 //winner rules
 
 //Go to the top your scripts.js file and create an array called board with three arrays inside of it. Each of these inner arrays should have three places held with empty quotes: "", separated by commas, ,.
@@ -122,8 +107,12 @@ let board = [
   ["","",""],
   ["","",""],
   ["","",""]
-  ]
-  
+  ];
+ 
+  //exact board location:
+
+ 
+
 
 const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
@@ -134,20 +123,39 @@ const checkForWin = () => {
 }
 
 const horizontalWin = () => {
-  if((board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") 
-  || (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")
-  )
-  
+  if(
+         (board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") 
+      || (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")
+      || (board[1][0] == "X" && board[1][1] == "X" && board[1][2] == "X") 
+      || (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O")
+      || (board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X") 
+      || (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O")
+    )
+
 }
 
+ // board2 = [
+  //   [[0,0],[0,1],[0,2]],
+  //   [[1,0],[1,1],[1,2]],
+  //   [[2,0],[2,1],[2,2]]
+  //   ]
+
 const verticalWin = () => {
-  if((board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") 
-  || (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O")
-)
+  if(
+     (board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") 
+  || (board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X")
+  || (board[0][2] == "X" && board[1][2] == "X" && board[2][2] == "X")
+  || (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O") 
+  || (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O")
+  || (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O")
+    )
 }
 
 const diagonalWin = () => {
-  if((board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") 
+  if(
+     (board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") 
   || (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O")
-)
+  || (board[0][2] == "X" && board[1][1] == "X" && board[2][0] == "X") 
+  || (board[0][2] == "O" && board[1][1] == "O" && board[2][0] == "O")
+    )
 }
