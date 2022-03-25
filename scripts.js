@@ -39,9 +39,12 @@ const addMarker = (id) => {
 
   //***********ASK HERE **************** */
   
-  // board[row][column] = currentMarker
-  // const row = parseInt(element.id.charAt(0))
-  // const column = parseInt(element.id.charAt(2))
+  // 2-1
+  const row = parseInt(id.charAt(0))
+  const column = parseInt(id.charAt(2))
+  board[row][column] = currentMarker
+
+  //it works now after putting the board[row][column] = currentMarker after line 43 and line 44
 
   //****************************************** */
 
